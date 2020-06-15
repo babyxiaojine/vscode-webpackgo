@@ -7,14 +7,14 @@ const utils_1 = require("./utils");
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
-    let startFunction = vscode.commands.registerCommand('extension.npmStart', (fileUri) => {
+    let startFunction = vscode.commands.registerCommand('extension.NpmStart', (fileUri) => {
         // The code you place here will be executed every time your command is executed
         // console.log(vscode.workspace.rootPath);
         // console.log(fileUri);
         let fsPath = fileUri.fsPath, fsId = fsPath.lastIndexOf('\\');
         fsPath = fsPath.substr(0, fsId);
         // let terminalA = vscode.window.createTerminal({ name: "老司机开车了" });
-        let terminalA = vscode.window.activeTerminal || vscode.window.createTerminal({ name: "老司机开车了" });
+        let terminalA = utils_1.default.getActiviteTerminal('DRIVER START') || vscode.window.createTerminal({ name: "DRIVER START" });
         terminalA.show(true);
         terminalA.sendText("cd " + fsPath);
         terminalA.sendText("npm start");
@@ -30,22 +30,14 @@ function activate(context) {
             value: inputValue
         }).then(function (msg) {
             if (msg) {
-                let terminalA = vscode.window.activeTerminal || vscode.window.createTerminal({ name: "老司机开车了" });
+                let terminalA = utils_1.default.getActiviteTerminal('DRIVER PUSH') || vscode.window.createTerminal({ name: "DRIVER PUSH" });
                 terminalA.show(true);
                 terminalA.sendText("cd " + fsPath);
                 terminalA.sendText(`git commit -a -m "${msg}"`);
                 terminalA.sendText('git push origin');
             }
         });
-        console.log(fsPath);
-        // fsPath = fsPath.substr(0,fsId);
-        // // let terminalA = vscode.window.createTerminal({ name: "老司机开车了" });
-        // let terminalA = vscode.window.activeTerminal || vscode.window.createTerminal({ name: "老司机开车了" });
-        // terminalA.show(true);
-        // terminalA.sendText("cd "+fsPath);
-        // terminalA.sendText("npm start");
-        // vscode.window.activeTerminal
-        // Display a message box to the user
+        console.log(vscode.window.terminals, 'ssss');
     });
     context.subscriptions.push(startFunction);
     context.subscriptions.push(startFunction2);

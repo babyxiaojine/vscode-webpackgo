@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const vscode = require("vscode");
 class Utils {
     static formatDate(timer, format = 'yyyy-MM-dd hh:mm:ss') {
         let timestamp = timer;
@@ -31,6 +32,12 @@ class Utils {
             }
         }
         return format;
+    }
+    static getActiviteTerminal(name) {
+        const terminals = vscode.window.terminals;
+        return terminals.find((item) => {
+            return item.name === name;
+        });
     }
 }
 exports.default = Utils;

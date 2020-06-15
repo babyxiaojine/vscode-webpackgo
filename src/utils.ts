@@ -1,3 +1,4 @@
+import * as vscode from 'vscode';
 export default class Utils {
     static formatDate(timer:string | number, format:string = 'yyyy-MM-dd hh:mm:ss'):string {
 		let timestamp:any = timer;
@@ -28,5 +29,12 @@ export default class Utils {
         }
 	  
 		return format;
+	}
+
+	static getActiviteTerminal(name:string){
+		const terminals = vscode.window.terminals;
+		return terminals.find((item) => {
+			return item.name === name;
+		})
 	}
 }

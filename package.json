@@ -6,7 +6,7 @@
 		"type": "git",
 		"url": "https://github.com/babyxiaojine/vscode-webpackgo.git"
 	},
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"publisher": "dmpss",
 	"engines": {
 		"vscode": "^1.43.0"
@@ -15,7 +15,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.npmStart",
+		"onCommand:extension.NpmStart",
 		"onCommand:extension.GitSubmit"
 	],
 	"main": "./out/extension.js",
@@ -26,8 +26,8 @@
 				"title": "Git Submit"
 			},
 			{
-				"command": "extension.npmStart",
-				"title": "Npm start"
+				"command": "extension.NpmStart",
+				"title": "Npm Start"
 			}
 		],
 		"menus": {
@@ -37,7 +37,7 @@
 					"group": "navigation"
 				},
 				{
-					"command": "extension.npmStart",
+					"command": "extension.NpmStart",
 					"group": "navigation"
 				}
 			]
