@@ -1,9 +1,13 @@
-# hellow README
+# webpackGo README
 
 This is my plugin.
 This is very good.
 
 **Enjoy!**
+```
+vscode login dmpss
+```
+
 ```
 npm run vscode:prepublish
 ```

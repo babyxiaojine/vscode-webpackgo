@@ -30,12 +30,10 @@ export function activate(context: vscode.ExtensionContext) {
 			if(msg){
 				let terminalA = Utils.getActiviteTerminal('DRIVER PUSH') || vscode.window.createTerminal({ name: "DRIVER PUSH" });
 				terminalA.show(true);
-				terminalA.sendText("cd "+fsPath);
-				terminalA.sendText(`git commit -a -m "${msg}"`);
+				terminalA.sendText(`cd ${fsPath}; git add -A .; git commit -a -m "${msg}"`);
 				terminalA.sendText('git push origin');
 			}
 		});
-		console.log(vscode.window.terminals,'ssss');
 	});
 	context.subscriptions.push(startFunction);
 	context.subscriptions.push(startFunction2);
